@@ -1,0 +1,29 @@
+# БЛОК 1: ТОЧКА ВХОДА И ИНТЕРПРЕТАТОР
+entrypoint = "lr6.py"
+modules = ["python-3.11"]
+
+# БЛОК 2: СИСТЕМНЫЕ ЗАВИСИМОСТИ (NIX)
+[nix]
+channel = "stable-25_05"
+packages = ["cairo", "ffmpeg-full", "freetype", "ghostscript", "glibcLocales", "gobject-introspection", "gtk3", "pkg-config", "qhull", "tcl", "tk"]
+
+# БЛОК 3: НАСТРОЙКИ ТЕСТИРОВАНИЯ
+[unitTest]
+language = "python3"
+
+# БЛОК 4: ИМПОРТ ИЗ GITHUB
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+# БЛОК 5: РАЗВЁРТЫВАНИЕ
+[deployment]
+run = ["python3", "main.py"]
+deploymentTarget = "cloudrun"
+
+# БЛОК 6: РЕЖИМ АГЕНТА
+[agent]
+expertMode = true
+
+# БЛОК 7: ПРОКСИ ПОРТОВ
+[[ports]]
+localPort = 5000
